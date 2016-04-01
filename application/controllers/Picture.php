@@ -10,7 +10,8 @@ class Picture extends CI_Controller {
 
     public function index()
     {
-        $data['pic'] = $this->picture_model->get_pic();
+        $data = $this->picture_model->getPictureList(0,10);
+        var_dump( $data );
         $this->load->view('picture/list', $data);
     }
 

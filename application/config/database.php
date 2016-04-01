@@ -96,11 +96,12 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 $db['jingqy'] = array(
-		'dsn'	=> 'mysql:host=127.0.0.1;port=3306;charset=utf8',
+		'dsn'	=> 'mysql:host=127.0.0.1;port=3306;charset=utf8;dbname=meizitu',
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => '000000',
-		'dbdriver' => 'pdo',
+        'dbdriver' => 'pdo',
+        'database' => 'meizitu',
 		'dbprefix' => '',
 		'pconnect' => FALSE,
 		'db_debug' => (ENVIRONMENT !== 'production'),

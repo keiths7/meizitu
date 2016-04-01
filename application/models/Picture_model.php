@@ -9,7 +9,14 @@ class Picture_model extends CI_Model {
     }
 
     //TODO 获取所有图片列表
-    public function getPictureList(){}
+    public function getPictureList( $start, $count ) {
+        $query = $this->db->get( 'PicBaseInfo',$count,$start );
+        $list =  array();
+        foreach ( $query->result() as $row ) {
+            $list[] = $row;
+        }
+        return $list;
+    }
 
     //TODO 获取图片详情
     public function getPictureDetail( $intPId ){}

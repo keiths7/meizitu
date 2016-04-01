@@ -1,0 +1,7 @@
+*.swp
+gate
+php_errors.log
+.project
+.idea/*
+target
+.DS_Store

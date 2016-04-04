@@ -15,7 +15,12 @@ class Picture_model extends CI_Model {
         foreach ( $query->result() as $row ) {
             $list[] = $row;
         }
-        return $list;
+        $count = $this->db->count_all_results( 'PicBaseInfo' );
+        $data = array(
+            "count" => $count,
+            "data" => $list,
+        );
+        return $data;
     }
 
     //TODO 获取图片详情

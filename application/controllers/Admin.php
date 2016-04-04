@@ -5,13 +5,28 @@ class Admin extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('tags_model');
+        $this->load->model('picture_model');
+        $this->load->library('pagination');
         $this->load->helper('url_helper');
     }
 
-    public function adminTags( $tId = 1 )
+    public function adminTags( $start = 0 )
     {
         $arrRes = ResData::getInstance();
-        var_dump( $arrRes );
+        $pageCount = 20;
+        $picInfo = $this->picture_model->getPictureList( $start, $pageCount );
+        $config['base_url'] = '/admin/admintags';
+        $config['total_rows'] = $picInfo['count'];
+        $config['per_page'] = 20;
+        $this->pagination->initialize($config);
+        $pages = $this->pagination->create_links();
+        $data['pictures'] = $picInfo['data'];
+        $data['pages'] = $pages;
+        #var_dump($picInfo);
+        #echo $pages;
+        $this->load->view('admin/admintags', $data);
+
+
     }
 
     public function setTags( $pId=0, $tId=0 ) {

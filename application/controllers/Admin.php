@@ -20,8 +20,13 @@ class Admin extends CI_Controller {
         $config['per_page'] = 20;
         $this->pagination->initialize($config);
         $pages = $this->pagination->create_links();
+
+        //获取分类信息
+        $tagsList = $this->tags_model->getTags();
+
         $data['pictures'] = $picInfo['data'];
         $data['pages'] = $pages;
+        $data['tagsList'] = $tagsList;
         #var_dump($picInfo);
         #echo $pages;
         $this->load->view('admin/admintags', $data);
@@ -47,5 +52,9 @@ class Admin extends CI_Controller {
     {
         echo phpinfo();
         //$this->load->view('templates/header', $data);
+    }
+
+    public function test()
+    {
     }
 }

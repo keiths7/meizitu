@@ -27,8 +27,17 @@ class Tags_model extends CI_Model {
         $this->load->database();
     }
 
-    //TODO 获取分类列表
-    public function getTags(){}
+    /**
+     * 获取全部标签内容
+     */
+    public function getTags() {
+        $query = $this->db->get( 'TagsInfo' );
+        $list =  array();
+        foreach ( $query->result() as $row ) {
+            $list[] = $row;
+        }
+        return $list;
+    }
 
     public function setPicTag( $pId, $tId = 0 ) {
         if ( $tId === 0 ) {

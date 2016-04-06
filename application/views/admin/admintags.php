@@ -53,26 +53,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Brand</a>
+                <a class="navbar-brand" href="#">tag设置</a>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container">
+    <?php foreach( $pictures as $picture ) { ?>
     <div class="row">
         <div class="col-md-8">
             <!-- 图片每一行 -->
-            <div class="row" max-width="500">
-                <div style="max-width:300px;">
-                    <img src="http://pic.nipic.com/2007-10-12/2007101283219241_2.jpg" class="img-responsive" width="500">
+            <div class="row" max-width="635">
+                <div style="max-width: 635px;">
+                    <img src="<?php echo $picture['PicUrl'];?>" class="img-responsive" width="635">
                 </div>
                 <br>
                 <div>
                     <?php foreach( $tagsList as $objTag ) {?>
-                        <button type="button" class="btn btn-primary" tid="<?php echo $objTag->tid;?>">
-                            <?php echo htmlentities( $objTag->tname );?>
-                        </button>
+                        <?php if( array_search($objTag->tid,$picture['tids']) === FALSE )  { ?>
+                            <button type="button" class="btn btn-primary" tid="<?php echo $objTag->tid;?>" pid="<?php echo $picture['Pid'];?>">
+                                <?php echo htmlentities( $objTag->tname );?>
+                            </button>
+                        <?PHP }?>
                     <?php } ?>
                 </div>
 
@@ -84,36 +87,28 @@
         </div>
     </div>
     <hr/>
-    <div class="row">
-        <div class="col-md-8">
-            <!-- 图片每一行 -->
-            <div class="row" max-width="500">
-                <div style="max-width:300px;">
-                    <img src="http://pic.nipic.com/2007-10-12/2007101283219241_2.jpg" class="img-responsive" width="500">
-                </div>
-                <br>
-                <div>
-                    <?php foreach( $tagsList as $objTag ) {?>
-                        <button type="button" class="btn btn-primary" tid="<?php echo $objTag->tid;?>">
-                            <?php echo htmlentities( $objTag->tname );?>
-                        </button>
-                    <?php } ?>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-md-4">
-
-        </div>
-    </div>
+    <?php } ?>
+    <?php echo $pages;?>
 
 </div> <!-- /container -->
-<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
-    function setTag(obj){
-        $(obj).hide();
-    }
+$(function(){
+    $("[tid]").click(function(){
+        var tid = $(this).attr("tid");
+        var pid = $(this).attr("pid");
+        var url = "/admin/setTags/"+pid+"/"+tid;
+        var dom = $(this);
+        $.post(url,{},function( result ){
+            if ( result.res == true ) {
+                dom.hide();
+            } else {
+                alert("设置失败");
+                return;
+            }
+        },"json");
+    })
+})
 </script>
 </body>
 </html>

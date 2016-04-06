@@ -15,6 +15,10 @@ class Admin extends CI_Controller {
         $arrRes = ResData::getInstance();
         $pageCount = 20;
         $picInfo = $this->picture_model->getPictureList( $start, $pageCount );
+        foreach ( $picInfo['data'] as & $picture ) {
+            $tids = $this->picture_model->getPictureTagsId( $picture['Pid'] );
+            $picture['tids'] = $tids;
+        }
         $config['base_url'] = '/admin/admintags';
         $config['total_rows'] = $picInfo['count'];
         $config['per_page'] = 20;
@@ -25,9 +29,10 @@ class Admin extends CI_Controller {
         $tagsList = $this->tags_model->getTags();
 
         $data['pictures'] = $picInfo['data'];
+
         $data['pages'] = $pages;
         $data['tagsList'] = $tagsList;
-        #var_dump($picInfo);
+
         #echo $pages;
         $this->load->view('admin/admintags', $data);
 
@@ -56,5 +61,7 @@ class Admin extends CI_Controller {
 
     public function test()
     {
+        $tids = $this->picture_model->getPictureTagsId(1);
+        var_dump($tids);
     }
 }

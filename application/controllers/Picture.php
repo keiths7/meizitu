@@ -6,13 +6,24 @@ class Picture extends CI_Controller {
         parent::__construct();
         $this->load->model('picture_model');
         $this->load->helper('url_helper');
+        $this->load->library('pagination');
     }
 
-    public function index()
+    public function index($page=0)
     {
-        $data = $this->picture_model->getPictureList(0,10);
-        var_dump( $data );
-        $this->load->view('picture/list', $data);
+        $pageCount = 20;
+        $picInfo = $this->picture_model->getPictureList($page, $pageCount);
+        
+        $config['base_url'] = '/picture/index';
+        $config['total_rows'] = $picInfo['count'];
+        $config['per_page'] = 20;
+        $this->pagination->initialize($config);
+        $pages = $this->pagination->create_links();
+        
+        $data['pictures'] = $picInfo['data'];
+        $data['pages'] = $pages;
+        
+        $this->load->view('picture/index', $data);
     }
 
     public function view($slug = NULL)

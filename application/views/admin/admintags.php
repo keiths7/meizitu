@@ -77,6 +77,8 @@
                             </button>
                         <?PHP }?>
                     <?php } ?>
+
+                    <button type="button" class ="btn btn-danger"  del_pid="<?php echo $picture['Pid'];?>" >删除</button>
                 </div>
 
             </div>
@@ -108,6 +110,16 @@ $(function(){
             }
         },"json");
     })
+    $("[del_pid]").click(function(){
+        var pid = $(this).attr("del_pid");
+        $.post("/admin/delPic/"+pid,{},function(){
+            if (result.res == false ) {
+                alert("删除失败");
+                return ;
+
+            }
+        },"json");
+    });
 })
 </script>
 </body>

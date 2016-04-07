@@ -37,7 +37,7 @@
                                 <span class="s-title">标题</span><span class="s-time">今天 22:00</span>
                             </div>
                             <div class="pic-content">
-                                <img src="<?php $picture['PicUrl'];?>" alt="" width="640px">
+                                <img src="<?php echo $picture['PicUrl'];?>" alt="" width="640px">
                             </div>
                             <div class="pic-footer">
                                 <div class="op-fav">收藏</div>
@@ -49,10 +49,6 @@
                     </ul>
                     <div class="pagination">
                         <?php echo $pages;?>
-                        <a href="">上一页</a>
-                        <a href="">1</a>
-                        <a href="">2</a>
-                        <a href="">下一页</a>
                     </div>
                 </div>
                 <div class="right-list">

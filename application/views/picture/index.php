@@ -3,7 +3,7 @@
     <head>
         <title>姐姐图</title>
         <meta charset="utf8">
-        <link rel="stylesheet" href="css/ui.css">
+        <link rel="stylesheet" href="/public/css/ui.css">
     </head>
     <body>
         <div class="header">
@@ -48,7 +48,7 @@
                         <?php endforeach;?>
                     </ul>
                     <div class="pagination">
-                        <?php echo pages;?>
+                        <?php echo $pages;?>
                         <a href="">上一页</a>
                         <a href="">1</a>
                         <a href="">2</a>

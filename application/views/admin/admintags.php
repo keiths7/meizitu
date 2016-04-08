@@ -69,11 +69,11 @@
                 </div>
                 <br>
                 <div>
-                    <?php foreach( $tagsList as $objTag ) {?>
-                        <button type="button" class="btn btn-primary" tid="<?php echo $objTag->tid;?>">
-                            <?php echo htmlentities( $objTag->tname );?>
+                    <?php /*foreach( $tagsList as $objTag ) {*/?><!--
+                        <button type="button" class="btn btn-primary" tid="<?php /*echo $objTag->tid;*/?>">
+                            <?php /*echo htmlentities( $objTag->tname );*/?>
                         </button>
-                    <?php } ?>
+                    --><?php /*} */?>
                 </div>
 
             </div>
@@ -84,29 +84,7 @@
         </div>
     </div>
     <hr/>
-    <div class="row">
-        <div class="col-md-8">
-            <!-- 图片每一行 -->
-            <div class="row" max-width="500">
-                <div style="max-width:300px;">
-                    <img src="http://pic.nipic.com/2007-10-12/2007101283219241_2.jpg" class="img-responsive" width="500">
-                </div>
-                <br>
-                <div>
-                    <?php foreach( $tagsList as $objTag ) {?>
-                        <button type="button" class="btn btn-primary" tid="<?php echo $objTag->tid;?>">
-                            <?php echo htmlentities( $objTag->tname );?>
-                        </button>
-                    <?php } ?>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-md-4">
-
-        </div>
-    </div>
+    <?php echo $pages;?>
 
 </div> <!-- /container -->
 <script type="text/javascript" src="jquery-1.9.1.min.js"></script>

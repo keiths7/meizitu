@@ -12,7 +12,7 @@ class Picture_model extends CI_Model {
     public function getPictureList( $start, $count ) {
         $query = $this->db->get( 'PicBaseInfo',$count,$start );
         $list =  array();
-        foreach ( $query->result() as $row ) {
+        foreach ( $query->result_array() as $row ) {
             $list[] = $row;
         }
         $count = $this->db->count_all_results( 'PicBaseInfo' );
@@ -32,6 +32,22 @@ class Picture_model extends CI_Model {
     //TODO 后台管理-图片分类
     public function setPictureTagsId( $intPId, $intTId ){}
 
+    /**
+     * 获取图片tid
+     * @param $intPId 图片ID
+     * @return array
+     */
+    public function getPictureTagsId( $intPId ) {
+
+        $sql = 'select tid,pid from TagsPicRelation where pid = ? and ifdel = 0';
+        $query =$this->db->query( $sql, array($intPId) );
+        $intTIds = array();
+        foreach ( $query->result_array() as $row ) {
+            $intTIds[] = $row['tid'];
+        }
+        return $intTIds;
+
+    }
 
 
 }

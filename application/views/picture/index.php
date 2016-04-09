@@ -37,7 +37,7 @@
                                 <span class="s-title">标题</span><span class="s-time">今天 22:00</span>
                             </div>
                             <div class="pic-content">
-                                <img src="<?php echo $picture['PicUrl'];?>" alt="" width="640px">
+                                <img class="lazy" data-src="<?php echo $picture['PicUrl'];?>" alt="" width="640px">
                             </div>
                             <div class="pic-footer">
                                 <div class="op-fav">收藏</div>
@@ -146,5 +146,16 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="/public/js/jquery.lazy.min.js"></script>
+        <script type="text/javascript">
+            $('.lazy').Lazy({
+                scrollDirection: 'vertical',
+                effect: 'fadeIn',
+                visibleOnly: true,
+                onError: function(element) {
+                    console.log('error loading ' + element.data('src'));
+                }
+            });
+        </script>
     </body>
 </html>

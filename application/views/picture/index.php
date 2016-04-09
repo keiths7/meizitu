@@ -146,6 +146,7 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="/public/js/jquery-1.8.3.min.js"></script>
         <script type="text/javascript" src="/public/js/jquery.lazy.min.js"></script>
         <script type="text/javascript">
             $('.lazy').Lazy({

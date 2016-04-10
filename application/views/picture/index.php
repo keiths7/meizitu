@@ -9,7 +9,7 @@
         <div class="header">
             <a href="/" class="logo">
                 <i class="icon-logo">
-                    <img src="http://wimg.spriteapp.cn/huodong/logo_new.png" alt="百思不得姐" title="百思不得姐官网">
+                    <img src="/public/img/logo.png" alt="百思不得姐" title="百思不得姐官网">
                 </i>
             </a>
         </div>

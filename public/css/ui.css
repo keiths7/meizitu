@@ -31,11 +31,11 @@ body,button,input,keygen,legend,select,textarea {
 }
 
 .banner {
-    height: 60px;
+    height: 50px;
     width: 960px;
     margin: 0 auto;
     background-color: #424147;
-    line-height: 60px;
+    line-height: 50px;
 }
 
 .link {
